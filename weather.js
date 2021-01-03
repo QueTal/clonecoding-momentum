@@ -13,13 +13,13 @@ function getWeather(lat, lng){
         console.log(json);
         weather.innerText = `${temperatrue} @ ${place}`;
     });
-
-
 }
+
 function saveCoord(coordsObj){
     localStorage.setItem(COORDS, JSON.stringify(coordsObj));
 
 }
+
 function handleGeoSuccess(position){
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
@@ -30,9 +30,11 @@ function handleGeoSuccess(position){
     saveCoord(coordsObj);
     getWeather(latitude, longitude);
 }
+
 function handleGeoError(){
     console.log("error");
 }
+
 function askForCoords(){
     navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoError)
 }
@@ -46,6 +48,7 @@ function loadCoords(){
         getWeather(parsedCoords.latitude, parsedCoords.longitude);
     }
 }
+
 function init(){
     loadCoords();
 }
